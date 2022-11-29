@@ -2284,28 +2284,28 @@
 
 
 ///////////////////BIND/////////////
-let carProps = {
-    name: "Nano",
-    color: "red",
-    getCarName() {
-        return this
-    }
-}
-carProps.getCarName()
+// let carProps = {
+//     name: "Nano",
+//     color: "red",
+//     getCarName() {
+//         return this
+//     }
+// }
+// carProps.getCarName()
 
-let bikeProps = {
-    mileage: 30,
-    automatic: true
-}
-function car(name, age) {
-    console.log(name, age)
-    return this
-}
-var newCarFn = car.bind(bikeProps)
-// console.log(newCarFn)
-//100 lines of code
-newCarFn("nano", 80)
-console.log(newCarFn("nano", 80))
+// let bikeProps = {
+//     mileage: 30,
+//     automatic: true
+// }
+// function car(name, age) {
+//     console.log(name, age)
+//     return this
+// }
+// var newCarFn = car.bind(bikeProps)
+// // console.log(newCarFn)
+// //100 lines of code
+// newCarFn("nano", 80)
+// console.log(newCarFn("nano", 80))
 // console.log(result) //????
 
 
@@ -2375,3 +2375,375 @@ console.log(newCarFn("nano", 80))
 // }
 
 // getNameArrow()
+
+//=================Lec38: 17November2022===============//
+
+// let obj1 = {
+//     name: "aviral"
+// }
+
+// function x() {
+//     // return this
+//     function y() {
+//         return this
+//     }
+//     y.call(obj1)
+// }
+
+
+// var newX = x.bind(obj1)
+
+// console.log(x()) //?
+
+
+//
+// function x(){
+//     var obj = {
+//         name:"aviral"
+//     }
+
+// function y() {
+//     return this
+//     }
+//     y()
+// }
+
+// console.log(x())//??
+
+//
+// let obj1 ={
+//         name:"aviral"
+//     }
+
+// function x() {
+//     function y(){
+//         return this
+//     }
+//     y()
+// }
+//  var newX = x.bind(obj1)
+// console.log(newX())//???
+
+//
+// let obj1 ={
+//     name:"aviral"
+// }
+
+// function x() {
+//     // return this
+// function y(){
+//     return this
+// }
+// y.call(obj1)
+// }
+// var newX = x.bind(obj1)
+// console.log(newX())//???//Output:undefined
+
+//
+// let obj1 ={
+//     name:"aviral"
+// }
+
+// function x() {
+//     // return this
+// function y(){
+//     return this
+// }
+// y.call(obj1)
+// }
+// var newX = x.bind(obj1)
+// console.log(newX())//??
+
+// now here come the scene of arrow function because the concept are getting confused
+
+//Arrow function??? //normal function ko likhne ka ek chota tariqa hota ha
+
+// function getName(){
+//     return "aviral"
+// }
+// getName();
+
+//
+// function getName(){
+//     return "aviral"
+// }
+// console.log(getName());
+
+//
+// function getName(){
+//     if(5>6){
+//     return "aviral"
+//     }
+//     else{
+//         return "Saurabh"
+//     }
+// }
+// console.log(getName())
+
+
+//same above code become so simple by using arrow function
+// var getNameArrow = () => "aviral" 
+// console.log(getNameArrow())
+
+//
+// var getNameArrow = () => 5>6 ? "aviral" : "Saurabh"
+// console.log(getNameArrow())
+
+
+//
+//for such cases to write code in Arrow function
+// function getSum(x,y){
+//     if(!x) {
+//         x = 0
+//     }
+//     if(!y) {
+//         y = 0
+//     }
+//     return x+y
+// }
+// console.log(getSum(5,3))
+
+// for such above code in arrow function we add only {} for return the value like below
+
+// var getNameArrow=(x,y) => {
+//     if(!x) {
+//         x = 0
+//     }
+//     if(!y) {
+//         y = 0
+//     }
+//     return x+y
+// }
+// // console.log(getNameArrow())
+// console.log(getNameArrow(5,3))
+
+//
+// var arr = [1, 2, 4,5646, 2, 3413, 6]
+// //  var result = arr.filter((eachArrValue) => eachArrValue>3)
+//  var result = arr.map((eachArrValue) => eachArrValue*3)
+// console.log(result)
+
+//
+// if I dont write code then its show undefined
+// var arr = [1, 2, 4,5646, 2, 3413, 6]
+//  var result = arr.map((eachArrValue) => {
+//     //write multiple code here
+//  eachArrValue*3
+//  })
+// console.log(result)
+
+//in case of normal functions the value of this is basically the object that called that function
+//in case of arrow functions this keyword is basically the object that defined the arrow function
+//baically Arrow function dont have their own This
+
+// var _email = "xyz.name.com"
+
+// console.log(window._email)
+
+// function x() {
+//     return this
+// }
+// console.log(x())
+
+//
+// let obj1 = {
+//         name: "aviral",
+//         age: 80,
+//         getName: function() {
+//             return this
+//         },
+//         getAge: function() {
+//             return this
+//         }
+//     }
+
+//     console.log(obj1.getName())//OutPut will be obj1 //Output:{"name": "aviral","age": 80}
+// console.log(obj1.getAge())//Now this value will be windows
+
+
+//
+// let obj2 = {
+//     name: "Sameer",
+//     age: 90
+// }
+
+// let obj1 = {
+//     name: "aviral",
+//     age: 80,
+//     getName: function() {
+//         return this
+//     },
+//     getAge: function() {
+//         return this
+//     }
+// }
+// console.log(obj1.getAge.call(obj2))//output:{name: 'Sameer', age: 90}
+// // console.log(obj1.getAge.call(obj2))
+
+// // console.log(obj1.getAge())
+
+//
+// function MyArray(x){
+//     this.array = x
+//     this.getLength = function(){
+//         return this.array.length
+//     }
+// }
+// var arr1 = new MyArray([10,121,21])
+// console.log(arr1.getLength())//0utput: 3
+
+//
+// function MyArray(x){
+//     this.array = x
+//     this.getLength = function(){
+//         return this.array.length
+//     }
+// }
+
+// var arr2 = []
+// arr2.length
+// var arr1 = new MyArray([10,121,21])
+// var arr2 = new MyArray([10,121,21,45,12,12])
+// console.log(arr1.getLength())//output: 3
+// console.log(arr2.getLength())//output: 6
+
+//
+// function MyArray(x) {
+//     this.array = x
+//     this.getLength = function () {
+//         return this.array.length
+//     }
+// }
+// var arr1 = new MyArray([10, 121, 21])
+// console.log(arr1)
+/*output: MyArray {array: Array(3), getLength: ƒ}
+array
+: 
+(3) [10, 121, 21]
+getLength
+: 
+ƒ ()
+[[Prototype]]
+: 
+Object*/
+
+
+//
+// private variable and private method
+//Prototype: whenever I create any constructor whatever their properties and method its add another property automatically
+//prototype me aap constructor change nhi karna chahte ha par ek extra method add karna chahate ha
+// private variable
+//  function MyCar (color, brand, convertable) {
+//     this.brand = brand
+//     this.convertable = convertable
+//     this.getBrand = function() {
+//         return this.brand
+//     }
+//     var color = color//ye private variable ka code ha jo iske internal use ke liye hi available ha aur output me color ka koi zikar nhi ha naye object me is line of code se koi matlab nhi ha
+// }
+
+// var car1 = new MyCar("red", "tata", false)
+// console.log(car1)
+/*output:
+MyCar {brand: 'tata', convertable: false, getBrand: ƒ}
+brand: "tata"
+convertable: false
+getBrand: ƒ ()
+[[Prototype]]: Object
+*/
+
+//
+// private method
+// function MyCar (color, brand, convertable) {
+//         this.brand = brand
+//         this.convertable = convertable
+//         this.getBrand = function() {
+//             return this.brand
+//         }
+//         var  color = color
+//         var getConvertable = function() {
+//             return convertable
+//     }
+// }
+// var car1 = new MyCar("red", "tata", false)
+// console.log(car1.getBrand())//output:tata
+// console.log(car1.getConvertable())//output:Uncaught TypeError: car1.getConvertable is not a function
+
+
+
+//
+//PROTYPE
+// function MyCar (color, brand, convertable) {
+//         this.brand = brand
+//         this.convertable = convertable
+//         this.getBrand = function() {
+//             return this.brand
+//         }
+//     var color = color
+// }
+
+// MyCar.prototype.getConvertable = function() {
+//     return "Hi i am convertable"
+// }
+
+// var car1 = new MyCar("red", "tata", false)
+// console.log(car1)//MyCar {brand: 'tata', convertable: false, getBrand: ƒ}
+// console.log(car1.getConvertable())//output: Hi i am convertable
+
+//
+// Array.prototype.getMyName = function (){
+//     console.log(this)//output:[1,2,3,4]
+//     // return "aviral"
+// }
+// var arr = [1, 2, 3, 4];
+// var arr2 = [21312,13123,24235,346,45]
+// console.log(arr.getMyName())
+// console.log(arr2.getMyName())
+
+//now see the actual functioning of prototype
+
+// console.log(arr.length);
+// console.log(arr.getMyName())//output: aviral
+
+//what so ever you create using protoype
+//gets vreated in constructors proto
+// Array.prototype.map = function() {
+//     return "aviral"
+// }
+ 
+// console.dir(arr.getMyName())
+// console.log(arr.length)
+// console.log(arr.getMyName())
+
+//
+//prototype is basically a method jo ye particular constructor ke proto me add karta ha
+//in old days we use prototype like this
+// Array.prototype.getMyName = function (){
+//         console.log(this)
+//     }
+//     var arr = [1,2,3,4];
+//     var arr2 = [21312,13123,24235,346,45]
+//     console.dir(arr)//output: Array[4]
+
+
+//
+// Array.prototype.getMyName = function(){
+//     console.log(this)
+// }
+
+// // [ [prototype]] =====> __proto__
+// var arr = [1,2,3,4];//ye constructor Array se bana ha
+// var arr2 = [21312,13123,24235,346,45]
+// console.log(arr)
+// console.dir(arr.__proto__)
+// console.dir(arr.__proto__.__proto__)
+// console.dir(arr.__proto__.__proto__.__proto__)
+// // console.dir(arr.__proto__.__proto__.__proto__.__proto__)
+
+// console.log(arr.toString())
+// console.log(arr.valueOf())
+
+
+
+//=================Lec39: 17November2022===============//
+
