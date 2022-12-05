@@ -2710,7 +2710,7 @@ getBrand: ƒ ()
 // Array.prototype.map = function() {
 //     return "aviral"
 // }
- 
+
 // console.dir(arr.getMyName())
 // console.log(arr.length)
 // console.log(arr.getMyName())
@@ -2747,3 +2747,681 @@ getBrand: ƒ ()
 
 //=================Lec39: 17November2022===============//
 
+//Do not use prototype on inbuilt constructor
+// var arr = [21312,13123,24235,346,45]
+// arr._proto_ = null
+// console.dir(arr)
+// console.log(typeof(arr))
+
+//
+// in obj we should not use prototype
+// var obj = {
+//     name: "aviral"
+// }
+// obj._proto_ = null
+// console.dir(obj)
+
+//
+//map??? 
+//polyfill??
+//write your polyfill??? polyfill is nothing but you have to create your own function
+
+//
+//function fn(eme, index) {
+
+// }
+
+// [1,2,3,4,5].map((element, index) => element*2)
+
+//
+// Array.prototype.newMap = function(){
+//     console.log(this)//output: (6) [1, 2, 3, 4, 5, 6]
+// }
+//  var arr1 = [1,2,3,4,5,6]
+//  arr1.newMap()
+
+//
+// Array.prototype.newMap = function(fn){
+//         console.log(this)
+//         console.log(fn)
+//     }
+//      var arr1 = [1,2,3,4,5,6]
+//      arr1.newMap(arr1.newMap((elem) => elem *2))
+
+//
+// Array.prototype.newMap = function(fn){
+//     console.log(this)
+//     console.log(fn)
+
+// }
+//  var arr1 = [1,2,3,4,5,6]
+//  arr1.newMap(arr1.newMap((elem) => elem *2))
+
+//
+//using normal function above code used Arroe function
+// Array.prototype.newMap = function(fn){
+//     console.log(this)
+//     console.log(fn)
+
+// }
+//  var arr1 = [1,2,3,4,5,6]
+//  arr1.newMap(function(element, index){
+//     return element*2
+//  })
+
+//
+// Array.prototype.newMap = function(_fn){
+//         console.log(this)
+//         console.log(_fn)
+
+//         let result = [];
+//     for(let i=0; i<this.length; i++) {
+//         console.log(_fn(this[i]))
+//     }
+// }
+//      var arr1 = [1,2,3,4,5,6]
+//      arr1.newMap(function(element){
+//         return element*2
+//      })
+
+//
+// Array.prototype.newMap = function(_fn){
+//     console.log(this)
+//     console.log(_fn)
+
+//     let result = [];
+// for(let i=0; i<this.length; i++) {
+//     let newArrayElement = _fn(this[i])
+//               result.push(newArrayElement)
+//         }
+//         return result
+// }
+//  var arr1 = [1,2,3,4,5,6]
+//  var x = arr1.newMap(function(element){
+//     return element*2
+//  })
+//  console.log(x)
+
+//
+// Array.prototype.newMap = function(_fn){
+//    let passedArray = this
+//    let result = [];
+
+//     for(let i=0; i<passedArray.length; i++) {
+//         let newArrayElement = _fn(passedArray[i])
+//                   result.push(newArrayElement)
+//             }
+//             return result
+//     }
+//      var arr1 = [1,2,3,4,5,6]
+//    var arr2 = [123,3243,5456,5867,231]
+// console.log(arr1.newMap((elem) => elem *2))//output:(6) [2, 4, 6, 8, 10, 12]
+
+// console.log(arr2.newMap((elem) => elem*3))//output:(5) [369, 9729, 16368, 17601, 693]
+//  var x = arr1.newMap(function(element) {
+//         return  element/2
+//     })
+
+//     console.log(x)
+
+//
+// String.prototype.newLength = function() {
+//             return this.length + 1
+//     }
+
+
+//     var name1 = "aviral"
+//     var name2 = "venketash prasahd yadav"
+//     console.log(name2.newLength())
+
+//Map Aur filter ka Autofill seekh lo mostly asked in interview question 
+// ==================================================
+
+// Arrow function 
+
+//in case of normal functions the value of this is basically the object
+//that called that function
+
+//in case of arrow functions this keyword is basically the  
+//object that defined the arrow function
+
+// console.log(this)//output:Window object
+
+//
+// var name1 = "aviral"
+// function displayName(){
+//     console.log(name1)//output:aviral
+//     console.log(this)//output:windoww object
+// }
+// displayName()
+
+//
+// var car ={
+//     age: 100,
+//     getSpeed: function(){
+//         console.log(this.age)//output:100
+//         console.log(this)//output:car object=> in case of normal functions the value of this is basically the object that called that function
+//     }
+// }
+// car.getSpeed()
+
+//
+// var car ={
+//     speed: 100,
+//     getSpeed: function(){
+//         function getSpeedLimit(){
+//         console.log(this.speed)//output:undefined
+//         console.log(this)//output: window object
+//     }
+//     getSpeedLimit()
+// }
+// }
+// car.getSpeed()
+
+//
+// var bus = {
+//     speed: 150
+// }
+
+// var car = {
+//     speed: 100,
+//     getSpeed: function () {
+//         function getSpeedLimit() {
+//             console.log(this.speed)//output:150
+//             console.log(this)//output:{speed: 150}
+//         }
+//         getSpeedLimit.call(bus)
+//     }
+// }
+// car.getSpeed()
+
+//
+// var bus = {
+//     speed: 150
+// }
+
+// var car = {
+//     speed: 100,
+//     getSpeed: function () {
+//         function getSpeedLimit() {
+//             console.log(this.speed)//output:150
+//             console.log(this)//output:{speed: 150}
+//         }
+//         getSpeedLimit.apply(bus)
+//     }
+// }
+// car.getSpeed.apply(bus)
+
+
+//
+// var bus = {
+//     speed: 150
+// }
+
+// var car = {
+//     speed: 100,
+//     getSpeed: function () {
+//         function getSpeedLimit() {
+//             console.log(this.speed)
+//             console.log(this)
+//         }
+//         getSpeedLimit.bind(bus)//bind koi function execute nhi karta ha so NO ANSWER
+//     }
+// }
+// car.getSpeed()
+
+
+//
+//  var bus = {
+//     speed:150
+//  }
+
+//     var car = {
+//         speed: 100,
+//         parts: {
+//             wheels: "mrf",
+//             body: "steel",
+//             getSpeedLimit: function() {
+//                 console.log(this)//output: {wheels: 'mrf', body: 'steel', getSpeedLimit: ƒ}
+//                 console.log(this.speed)//output:undefined
+//             }
+//         },
+//         getSpeed: function() {
+//         car.parts.getSpeedLimit()
+//         }
+//     }
+//     car.getSpeed()
+
+
+//
+// var car = {
+//             speed: 100,
+//             parts: {
+//                 wheels: "mrf",
+//                 body: "steel",
+//                 getSpeedLimit: function() {
+//                     console.log(this)
+//                     console.log(this.speed)//output:undefined
+//                 }
+//             },
+//             getSpeed: () =>{
+//                 console.log(this)
+//             },
+//             getSpeedLimit(){
+//                 console.log(this)//??output: car obj
+//             }
+//         }
+//         car.getSpeedLimit()
+//         // car.parts.getSpeedLimit()//output:parts obj
+    
+
+//
+// var bus = {
+//     name: "Rajesh travels"
+// }
+//  var car = {
+//                 speed: 100,
+//                 parts: {
+//                     wheels: "mrf",
+//                     body: "steel",
+//                     getSpeedLimit: function() {
+//                         console.log(this)
+//                     }
+//                 },
+//                 getSpeed: () =>{
+//                     console.log(this)
+//                 },
+//                 getSpeedLimit(){
+//                     console.log(this)
+//                 },
+//             }
+//             car.parts.getSpeedLimit.call(bus)
+//             // car.parts.getSpeedLimit()//output:parts obj
+    
+//ARROW FUNCTION
+//Now Arrow Function is simple than Normal Function 
+// var bus = {
+//         speed:150
+//      }
+    
+//         var car = {
+//             speed: 100,
+//             getSpeed: function(){
+//                 const getSpeedLimit = function(){
+//                 console.log(this)//output: window
+//                 }
+//                 getSpeedLimit()
+            
+//             }
+//         }
+//         car.getSpeed()
+
+
+//=================Lec42: 21November2022===============//
+
+// ===========================THIS================
+//Bitwise operator
+//garbage collection
+
+
+//=========================???????=======================//
+//everything is pure js....
+//dom bom... js with html and css
+
+//Arrow function do not have their own "this"
+// this in normal fn????
+// call bind 
+
+//
+// let aviralRoom = {
+//     table: "aviral table"
+// }
+
+// let mainRoom = {
+//     table: "main table"
+// }
+// function cleanTable(item){
+//     console.log(this)//??? output:window
+// }
+// cleanTable("soap")
+
+//
+// let aviralRoom = {
+//     table: "aviral table"
+// }
+
+// let mainRoom = {
+//     table: "main table"
+// }
+// function cleanTable(item){
+//     console.log(this)//??? //output:aviralRoom object: {table: 'aviral table'}
+// }
+// cleanTable.call(aviralRoom, "soap")
+
+//
+// let aviralRoom = {
+//     table: "aviral table"
+// }
+
+// let mainRoom = {
+//     table: "main table"
+// }
+// function cleanTable(item){
+//     // console.log(this)//??
+//     function innerFn(){
+//         console.log(`I am cleaning ${this.table} using ${item}`)//?? output:I am cleaning undefined using soap
+//         }
+//         innerFn()//this.table undefined hua kyoki innerFn me kuch call hi nhi kiya
+// }
+// cleanTable.call(aviralRoom, "soap")
+
+//
+//Question : value of inner function should be same as the value of this as outer function
+// let aviralRoom = {
+//     table: "aviral table"
+// }
+
+// let mainRoom = {
+//     table: "main table"  
+// }
+// function cleanTable(item){
+//     // console.log(this)//??
+//     function innerFn(){
+//         // console.log(this)
+//         console.log(`I am cleaning ${this.table} using ${item}`)//??        
+//     }
+//         innerFn.call(mainRoom)
+//         // innerFn.call(aviralRoom)//yaha innerFn ka this aviralRoom ha
+// }
+// cleanTable.call(mainRoom, "soap")//yaha pe cleanTable ka this mainRoom ha
+
+
+//
+// let aviralRoom = {
+//         table: "aviral table"
+//     }
+    
+//     let mainRoom = {
+//         table: "main table"  
+//     }
+//     function cleanTable(item){
+//         console.log(this)//??
+
+//         var valueOfThis = this;
+//         function innerFn(){
+//             console.log(`I am cleaning ${valueOfThis.table} using ${item}`)//??        
+//         }
+//             innerFn()
+//             // innerFn.call(aviralRoom)//yaha innerFn ka this aviralRoom ha
+//     }
+//     cleanTable.call(mainRoom, "soap")
+
+//
+// let aviralRoom = {
+//     table: "aviral table"
+// }
+
+// let mainRoom = {
+//     table: "main table"  
+// }
+// function cleanTable(item){
+//     console.log(this)//??
+
+//     //         function innerFn(){
+//     //             console.log(`I am cleaning ${valueOfThis.table} using ${item}`)//??        
+//     //         }
+
+//        let innerFn = () => { 
+//         console.log(`I am cleaning ${this.table} using ${item}`)
+// }
+// innerFn()
+// }
+// cleanTable.call(aviralRoom,"soap")
+
+//
+// function cleanTable() {
+//     console.log(x)
+// }
+// cleanTable("100")
+
+//
+// function cleanTable(x) {
+//     console.log(x)
+// }
+// cleanTable("100")
+
+//
+// function cleanTable() {
+//     console.log(arguments)
+// }
+// cleanTable("100","200","300")
+
+//
+// function cleanTable() {
+//     console.log(arguments[0])
+// }
+// cleanTable("100","200","300")
+
+//
+// function cleanTable(...x) {
+//     console.log(x[0])
+// }
+// cleanTable("100","200","300")
+
+
+//
+// function MyCar (color, brand, convertable) {
+//     this.brand = brand
+//     this.convertable = convertable
+//     this.getBrand = function() {
+//         return this.brand
+//     }
+//      this.color = color
+//     // var = function() {
+//     //         return getConvertable convertable
+//     // }
+// }
+
+// MyCar.prototype.getConvertable = function() {
+//     console.log(this.brand, this.convertable,this.color)
+// }
+
+// let cr1 = new MyCar("red", "tata", true)
+
+// cr1.getConvertable()
+
+
+//
+// function MyCar (color, brand, convertable) {
+//     this.brand = brand
+//     this.convertable = convertable
+//     this.getBrand = function() {
+//         return this.brand
+//     }
+//      this.color = color
+//     // var = function() {
+//     //         return getConvertable convertable
+//     // }
+// }
+
+// MyCar.prototype.getConvertable =()=> {
+//     console.log(this)
+// }
+
+// let cr1 = new MyCar("red", "tata", true)
+
+// cr1.getConvertable()
+
+//
+// function MyCar (color, brand, convertable) {
+//         this.brand = brand
+//         this.convertable = convertable
+//         this.getBrand = function() {
+//             return this.brand
+//         }
+//          this.color = color
+//         // var = function() {
+//         //         return getConvertable convertable
+//         // }
+//     }
+    
+//     MyCar.prototype.getConvertable = function() {
+//         console.log(this.convertable)
+//     }
+    
+//     let cr1 = new MyCar("red", "tata", true)
+//     let cr2 = new MyCar("blue", "maruti", false)
+    
+//     cr1.getConvertable()
+//     cr2.getConvertable()
+
+
+// ============================CLASSESSSS==================
+// function Person(name, age, hairColor) {
+//         this.name = name;
+//         this.age = age;
+//         this.hairColor = hairColor
+//     }
+//      Person.prototype.sayName = function() {
+//             console.log(`my name is ${this.name}`)
+//         }
+
+//     function Male(occupation, hobby) {
+//             this.occupation = occupation;
+//             this.hobby = hobby
+//         }
+        
+//         let sarang = new Male('developer', 'sleep')
+//         console.log(sarang)
+
+//
+// function Person(name, age, hairColor) {
+//             this.name = name;
+//             this.age = age;
+//             this.hairColor = hairColor
+//         }
+//          Person.prototype.sayName = function() {
+//                 console.log(`my name is ${this.name}`)
+//             }
+//     function Male(occupation, hobby, name, age, hairColor) {
+//         Person.call(this,name, age, hairColor )
+//         this.occupation = occupation;
+//         this.hobby = hobby
+// }
+
+//     let nilesh = new Male('developer', 'sleep', 'nilesh', 90, 'green')
+// console.log(nilesh)   
+        
+
+//
+// function Person(name, age, hairColor) {
+//     this.name = name;
+//     this.age = age;
+//     this.hairColor = hairColor
+// }
+//  Person.prototype.sayName = function() {
+//         console.log(`my name is ${this.name}`)
+//     }
+// function Male(occupation, hobby, name, age, hairColor) {
+// Person.call(this,name, age, hairColor )
+// this.occupation = occupation;
+// this.hobby = hobby
+// }
+
+// let nilesh = new Male('developer', 'sleep', 'nilesh', 90, 'green')
+// // console.log(nilesh)   
+
+// // //attach methods also
+// Male.prototype = Object.create(Person.prototype);
+// let dhanesh = new Male('gamer', 'playing', 'dhanesh', 7, 'black')
+// console.log(dhanesh.sayName())
+
+//
+//es6 came 2015
+//classes
+
+//
+// class Person {
+//     constructor(name, age,hairColor ) {
+//     this.name = name;
+//     this.age = age;
+//     this.hairColor = hairColor
+//     }
+//     sayName() {
+//         console.log(`my name is ${this.name}`)
+//     }
+// }
+// let nilesh = new Person('nilesh', 90, 'green')
+
+// console.log(nilesh)
+// // console.log(nilesh.sayName())
+
+
+//
+// class Person {
+//     constructor(name, age,hairColor ) {
+//     this.name = name;
+//     this.age = age;
+//     this.hairColor = hairColor
+//     }
+//     sayName() {
+//         console.log(`my name is ${this.name}`)
+//     }
+// }
+// let nilesh = new Person('nilesh', 90, 'green')
+
+// console.log(nilesh)
+
+// class Male extends Person{
+//     constructor(name,age,hairColor, occupation, hobby) {
+//         super(name,age,hairColor)
+//         this.occupation = occupation
+//         this.hobby = hobby
+//     }
+// }
+
+// ==============================????????=====================
+
+
+// JS IS SINGLE THREADED LANGUAGE?????
+
+// function AbortController() {
+//     //
+// }
+
+// function xyz() {
+//     //thousand line of code
+// return 
+// }
+
+// xyz();
+
+// AbortController();
+
+//api calls
+// asyc js
+// var x = 
+
+// console.log('aviral')
+
+// alert('in between')
+
+// console.log('Sameer')
+
+// var person;
+
+//api call to age person data
+
+// person = {age: 40}
+
+// console.log(person.age)
+//async js
+
+// function x( ) {
+// }
+
+
+///////////////////////////////MATH OBJECT//////////////
+/////////////////////////////////DATE OBJECT/////////////////////
+
+// 1/1000
