@@ -3425,3 +3425,194 @@ getBrand: ƒ ()
 /////////////////////////////////DATE OBJECT/////////////////////
 
 // 1/1000
+// let date = new Date()
+// console.log(date)
+
+//
+// let date = new Date(0)
+// console.log(date)
+// console.log(24*3600*1000)//total miliseond
+
+//
+// let date = new Date(24*3600*1000)
+// console.log(date)
+
+//
+// let date = new Date('year,month,date,hour,minute,second,ms')
+// let date = new Date(1992,1,1,09,20,20,0)
+// console.log(date)
+
+//
+// let date = new Date(1990,0)
+// console.log(date)
+
+//
+// let date1 = new Date(28*3600*1000)
+// let date1 = new Date(-24*3600*1000)
+// let date2 = new Date('1945-06-12')
+// let date3 = new Date(1992,11);
+// console.log(date1)
+// console.log(date2)
+// console.log(date2.getFullYear())
+// console.log(date2.getMonth())
+// console.log(date2.getDate())
+// console.log(date2.getHours())
+// console.log(date2.getMinutes())
+// console.log(date2.getSeconds())
+// console.log(date2.getMilliseconds())
+// console.log(date2.getDay())
+// console.log(date3)
+
+//
+// let date = new Date(1000)
+// console.log(date)
+
+
+//
+// let date =new Date('2016,1,28')
+// // console.log(date.getDate()+2)
+// console.log(date)
+// console.log(date.getDate()+2)
+// console.log(date)
+
+//
+// let start = new Date();
+// for(let i= 0; i<10000; i++) {
+//     let x = 0;
+//     x= x+i
+// }
+// let end =  new Date();
+// console.log(end-start)
+
+//
+// let start = new Date();
+// console.log(start)
+
+// for(let i= 0; i<100000; i++) {
+//     let x = 0;
+//     x= x+i
+// }
+
+// let end =  new Date();
+// console.log(end)
+// console.log(end-start)
+
+// '////////////////////////////////////////////////////'
+
+
+//
+//Asynchronous JavaScript
+// Now we will see it practically in loupe
+// console.log("1.");
+// function x(){
+//     console.log("2")
+// }
+// console.log("3");
+
+// x()
+
+//
+// console.log("1");
+// function x(){
+//     console.log("2")
+//       console.log("3")
+// }
+// x()
+// console.log("4");
+
+//
+// console.log("")
+// function x(){
+//     console.log("2")
+//     function y(){
+//         console.log("3")
+//     }
+//     y()
+// }
+// x()
+
+//
+// console.log("1")
+// function x(){
+//     console.log("2")
+//     function y(){
+//         console.log("3")
+//     }
+//     y()
+// }
+// x()
+// console.log("4")
+
+//
+// console.log("1")
+// //async code
+// var x;
+// x = fetch('askd')
+// console.log(x.name);//fatt gaya 
+// console.log('4');
+
+//
+//async code
+// var x;
+// x = fetch('name: alam')
+// console.log(x.name);//isska matlab ye wait nhi krta ha 
+// console.log('4');
+
+//
+// console.log("1")
+// setTimeout(() => {
+//     console.log("3")
+// }, 5000)
+// console.log("2")
+
+//
+// console.log("1")
+// setTimeout(() => {
+//     console.log("3")
+// }, 5000)
+
+// function x(){
+//     console.log("2")
+//     console.log("4")
+//     console.log("5")
+// }
+// x()
+
+
+//
+// console.log("1")
+// setTimeout(() => {
+//     console.log("6")
+// }, 5000)
+
+// setTimeout(() => {
+//     console.log("5")
+// }, 2000)
+
+// function x(){
+//     console.log("2")
+//     console.log("3")
+//     console.log("4")
+// }
+// x()
+
+
+//
+// console.log("1")
+// setTimeout(() => {
+//     console.log("6")
+// }, 5000)
+
+// setInterval(() => {
+//     console.log("5")
+// }, 2000)
+
+// function x(){
+//     console.log("2")
+//     console.log("3")
+//     console.log("4")
+// }
+// x()
+
+
+//=================Lec42: 21November2022===============//
